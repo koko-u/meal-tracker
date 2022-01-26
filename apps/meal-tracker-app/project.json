@@ -1,0 +1,97 @@
+{
+  "projectType": "application",
+  "root": "apps/meal-tracker-app",
+  "sourceRoot": "apps/meal-tracker-app/src",
+  "prefix": "meal-tracker",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/meal-tracker-app",
+        "index": "apps/meal-tracker-app/src/index.html",
+        "main": "apps/meal-tracker-app/src/main.ts",
+        "polyfills": "apps/meal-tracker-app/src/polyfills.ts",
+        "tsConfig": "apps/meal-tracker-app/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/meal-tracker-app/src/favicon.ico",
+          "apps/meal-tracker-app/src/assets"
+        ],
+        "styles": ["apps/meal-tracker-app/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/meal-tracker-app/src/environments/environment.ts",
+              "with": "apps/meal-tracker-app/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "meal-tracker-app:build:production"
+        },
+        "development": {
+          "browserTarget": "meal-tracker-app:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/meal-tracker-app/proxy.conf.json"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "meal-tracker-app:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/meal-tracker-app/src/**/*.ts",
+          "apps/meal-tracker-app/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/meal-tracker-app"],
+      "options": {
+        "jestConfig": "apps/meal-tracker-app/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
