@@ -1,0 +1,45 @@
+<div class="list-container">
+  <h1>
+    Planned Meals
+  </h1>
+
+  <p *ngIf="isLoading; else loaded">
+    Loading...
+  </p>
+  <ng-template #loaded>
+    <div class="list-item" *ngFor="let day of next7days; let i = index">
+      <ng-container *ngIf="mealsForDays[i] as meal; else noMeals">
+        <h3>
+          {{ day | date:'dd' }}
+        </h3>
+        <p>
+          {{ meal.recipe.name }}
+        </p>
+
+        <div class="right-action">
+          <mt-small-x (click)="onDelete(meal._id)"></mt-small-x>
+        </div>
+      </ng-container>
+      <ng-template #noMeals>
+
+        <h3>
+          {{ day | date:'dd' }}
+        </h3>
+        <p>
+          No meal planned
+        </p>
+
+        <div class="right-action">
+          <button (click)="navigateToRecipeSearchPage(day)">
+            Add
+          </button>
+        </div>
+      </ng-template>
+
+
+
+    </div>
+  </ng-template>
+
+</div>
+

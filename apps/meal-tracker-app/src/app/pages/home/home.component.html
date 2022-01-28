@@ -1,0 +1,21 @@
+<div class="page-container">
+  <div class="column">
+    <mt-meals-list
+      [isLoading]="isLoadingMeals"
+      [meals]="meals"
+      (deleteMeal)="onDeleteMeal($event)"
+    ></mt-meals-list>
+  </div>
+  <div class="column">
+    <mt-ingredients-list
+      [isLoading]="isLoadingIngredients"
+      [ingredients]="ingredients"
+      (deleteIngredient)="onDeleteIngredient($event)"
+    ></mt-ingredients-list>
+
+    <button class="shopping-list-button list-container full-width"
+            (click)="navigateToShoppingList()">
+      Generate Shopping List
+    </button>
+  </div>
+</div>

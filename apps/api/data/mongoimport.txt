@@ -1,0 +1,1 @@
+mongoimport --uri "mongodb+srv://<USER>:<PASSWORD>@fsacluster.wjcol.mongodb.net/FsaDb?retryWrites=true&w=majority" --collection recipes --drop --file ./apps/api/data/recipes.json --jsonArray

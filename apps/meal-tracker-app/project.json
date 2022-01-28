@@ -2,7 +2,7 @@
   "projectType": "application",
   "root": "apps/meal-tracker-app",
   "sourceRoot": "apps/meal-tracker-app/src",
-  "prefix": "meal-tracker",
+  "prefix": "mt",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
